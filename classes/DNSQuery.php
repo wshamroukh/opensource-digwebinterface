@@ -215,7 +215,7 @@ class DNSQuery {
             return $hostname;
         }
         
-        if (!preg_match('/^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)*[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?$/', $hostname)) {
+        if (!preg_match('/^([a-zA-Z0-9_](?:[a-zA-Z0-9\-_]{0,61}[a-zA-Z0-9_])?\.)*[a-zA-Z0-9_](?:[a-zA-Z0-9\-_]{0,61}[a-zA-Z0-9_])?$/', $hostname)) {
             throw new InvalidArgumentException("Invalid hostname format");
         }
         
