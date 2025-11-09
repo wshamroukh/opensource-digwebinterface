@@ -209,6 +209,12 @@ class DNSQuery {
             throw new InvalidArgumentException("Hostname cannot be empty");
         }
         
+        // Remove protocol if present (http:// or https://)
+        $hostname = preg_replace('/^https?:\/\//i', '', $hostname);
+        
+        // Remove everything after the first slash (e.g., example.com/path → example.com)
+        $hostname = preg_replace('/\/.*$/', '', $hostname);
+        
         $hostname = preg_replace('/[^a-zA-Z0-9\.\-_:]/', '', $hostname);
         
         if (filter_var($hostname, FILTER_VALIDATE_IP)) {
